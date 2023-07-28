@@ -1,0 +1,82 @@
+class Solution {
+    public long countFairPairs(int[] nums, int lower, int upper) {
+        
+        long res = 0;
+        int n = nums.length;
+        Arrays.sort(nums);
+        
+        for(int i = 0; i < n-1; i++)
+        {   
+            int l = findLower(i, nums, lower, upper, n);
+            
+            int u = findUpper(i, nums, lower, upper, n);
+            
+            if(l == -1 || u == -1)
+                continue;
+            
+            int items = u-l+1;
+            
+            res += items;
+        }
+        
+        return res;
+        
+    }
+    
+    public int findLower(int i, int nums[], int lower, int upper, int n)
+    {
+        int ans = -1;
+        int ele = nums[i];
+        int start = i+1;
+        int end = n-1;
+        
+        while(start <= end)
+        {
+            int mid = start+(end-start)/2;
+            
+            if(nums[mid]+ele >= lower)
+            {
+                if(nums[mid]+ele <= upper)
+                {
+                    ans = mid;
+                }
+                end = mid-1;
+            }
+            else 
+            {
+                start = mid+1;
+            }
+        }
+        
+        return ans;
+    }
+    
+    public int findUpper(int i, int nums[], int lower, int upper, int n)
+    {
+        int ans = -1;
+        int ele = nums[i];
+        int start = i+1;
+        int end = n-1;
+        
+        while(start <= end)
+        {
+            int mid = start+(end-start)/2;
+            
+            if(nums[mid]+ele <= upper)
+            {
+                if(nums[mid]+ele >= lower)
+                {
+                    ans = mid;
+                }
+                start = mid+1;
+            }
+            else 
+            {
+                end = mid-1;
+            }
+        }
+        
+        return ans;
+    }
+    
+}
