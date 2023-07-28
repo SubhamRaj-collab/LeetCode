@@ -59,3 +59,13 @@ class Solution {
     }
 
 }
+
+// TC: log(maxTime) * k
+    // k = length of the batteries array
+    // maxTime = sum of all the batteries / no of computers
+
+// TC: 10^5 * log(10^5 * 10^9 (max should be taken = sum))
+// TC: 10^5 * log(10^14)
+
+// SC: log(maxTime) * k
+// Same
