@@ -31,24 +31,36 @@ public class 1218_LongestSubsequeneOfGivenDifference {
 
         // return max;
 
+        // int n = arr.length;
+        // int max = 0;
+
+        // Map<Integer, Integer> map = new HashMap<>();
+
+        // for(int i = n-1; i >= 0; i--)
+        // {
+        //     int target = arr[i]+difference;
+        //     int k = 1;
+
+        //     if(map.containsKey(target))
+        //     {
+        //         k += map.get(target);
+        //     }
+
+        //     map.put(arr[i], k);
+        //     max = Math.max(max, k);
+
+        // }
+
+        // return max;
+
         int n = arr.length;
+        int numArr[] = new int[40004];
         int max = 0;
 
-        Map<Integer, Integer> map = new HashMap<>();
-
-        for(int i = n-1; i >= 0; i--)
+        for(int i = 0; i < n; i++)
         {
-            int target = arr[i]+difference;
-            int k = 1;
-
-            if(map.containsKey(target))
-            {
-                k += map.get(target);
-            }
-
-            map.put(arr[i], k);
-            max = Math.max(max, k);
-
+            numArr[arr[i]+20001] = numArr[arr[i]+20001-difference]+1;
+            max = Math.max(max, numArr[arr[i]+20001]);
         }
 
         return max;
