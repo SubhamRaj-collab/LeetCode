@@ -65,6 +65,8 @@ public class 1218_LongestSubsequeneOfGivenDifference {
 
         return max;
 
+        //This is only possible because: -104 <= arr[i], difference <= 104
+
     }
 
 }
